@@ -20,8 +20,6 @@ def angleLine(line):
 	elif angle == pi: return 0.0
 	else: return angle
 
-def parallel(a,b): # 兩向量 a,b 是否平行
-	return cross(a,b)==0
 
 def rotate(a, rad): # 向量 a 旋轉 rad 角度
 	return [a[0]*cos(rad)-a[1]*sin(rad), a[0]*sin(rad)+a[1]*cos(rad)]

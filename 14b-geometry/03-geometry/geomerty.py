@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../02-vector/')
 from vector import *
 
 def angle(a,b):
@@ -28,3 +30,11 @@ def symmetryPointLine(point, line): # 點相對線的對稱點
 	p, q = point, projectionPointLine(p, line) # q 是投射點
 	return [2*q[0]-p[0], 2*q[1]-p[1]] # 對稱點在投射點延伸兩倍的位置
 
+
+if __name__ == '__main__':
+	print('cross([1,2], [2,1])=', cross([1.0,2.0], [2.0,1.0]))
+	p0 = [0.0,0.0]; p1 = [1.0,1.0]; p2 = [2.0, 1.0]; p3 = [-1.0, 0.0]
+	print('direction(p0, p1, p2)=', direction(p0, p1, p2))
+	print('intersect(p0, p1, p2, p3)=', intersect(p0, p1, p2, p3))
+	l1 = Line(p0, p1)
+	print('relationPointLine(p2, l1)=', relationPointLine(p2, l1))

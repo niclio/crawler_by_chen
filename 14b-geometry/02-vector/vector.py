@@ -24,12 +24,26 @@ def dot(a,b):
 		r += a[i]*b[i]
 	return r
 
-def length(a):
+def norm(a):
 	r = 0.0
 	for x in a:
 		r += x**2
 	return math.sqrt(r)
 
+length = norm
+
 def distance(a,b):
 	return length(sub(a,b))
 
+def cross(a,b):
+	
+
+if __name__ == '__main__':
+	v0 = [0.0,0.0]; v1 = [1.0,1.0]; v2 = [2.0, 1.0]; v3 = [-1.0, 0.0]
+	print('v0=', v0, 'v1=', v1, 'v2=', v2, 'v3=', v3)
+	print('neg(v1)=', neg(v1))
+	print('add(v1,v2)=', add(v1,v2))
+	print('sub(v1,v2)=', sub(v1,v2))
+	print('dot(v1,v2)=', dot(v1,v2))
+
+	# print('cross(v1, v2)=', cross(v1, v2))
