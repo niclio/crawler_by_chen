@@ -2,6 +2,8 @@
 
 ## Book
 
+* [計算複雜性：現代方法 (Computational Complexity: A Modern Approach) ](https://www.tenlong.com.tw/products/9787111518990)
+
 * [Introduction to Theoretical Computer Science](https://introtcs.org/public/) (超讚)
     * PDF -- https://files.boazbarak.org/introtcs/lnotes_book.pdf
     * Course -- https://cs121.boazbarak.org/
