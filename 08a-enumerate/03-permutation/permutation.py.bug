@@ -11,9 +11,10 @@ def permNext(n, p): # 已經排好 p[0..i-1], 繼續排下去 [i...n-1]
 		return
 	# 還沒排滿，繼續排下去
 	for x in range(n): # 對本列的每一個 x 去嘗試
-		p.append(x)    # 把 x 放進盤面
-		permNext(n, p) # 繼續遞迴尋找下一個排列
-		p.pop()        # 把 x 移出盤面
+		if not x in p: # 若 x 不在排列中
+			p.append(x)    # 把 x 放進盤面
+			permNext(n, p) # 繼續遞迴尋找下一個排列
+			p.pop()        # 把 x 移出盤面
 		
 perm(2) # 列出 2 個的排列
 perm(3) # 列出 3 個的排列
