@@ -7,10 +7,10 @@ def c(A, n, k, chooses, m): # 從 A[0..n] 中選取 k 個補進 chooses，如果
 		print(chooses)
 		return
 	if n <= 0: return
-	c(A,n-1,k,chooses,m) # C(n-1,k)
+	c(A,n-1,k,chooses,m) # C(n-1,k) // A[n-1] 沒取到
 
 	chooses.append(A[n-1])
-	c(A,n-1,k-1,chooses,m) # C(n-1,k-1)
+	c(A,n-1,k-1,chooses,m) # C(n-1,k-1) // A[n-1] 有取到
 	del chooses[-1]
 
 combination([1,2,3,4,5], 3)
