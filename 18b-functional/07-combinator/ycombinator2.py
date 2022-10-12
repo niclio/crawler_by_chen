@@ -11,15 +11,13 @@ print('Max(3)(5)=', Max(3)(5))
 print('Min(3)(5)=', Min(3)(5))
 print('Fibonacci(8)=', Fibonacci(8))
 
-# Combinators : 把傳進來的函數 f 重複兩次，變成 lambda f:(f)(f)
-# 這樣就能讓 If 之類的函數變成兩份，讓兩種路徑都能被執行到
+# Combinators : 把傳進來的函數 f 重複兩次，變成 lambda f:f(f)
 # 例如 print(Y(lambda f: lambda n: IF(n < 2)(lambda: n)(lambda: f(n-1) + f(n-2))())(8))
 Y = lambda f:\
   (lambda x:f(lambda y:x(x)(y)))\
   (lambda x:f(lambda y:x(x)(y)))
 
-# Y(f)= (lambda n: If(n < 2)(lambda: n)(lambda: f(n-1) + f(n-2))()
-#       (lambda n: If(n < 2)(lambda: n)(lambda: f(n-1) + f(n-2))()
-#       然後呢？還是沒想清楚 ....
+# Y(fib)= fib(x)=>fib(y=>x(x)(y)) fib(x)=>fib(y=>x(x)(y))
+# Y(fib)(n) = fib(fib)(n) ???
 print('Y(f)(8)=', Y(lambda f: \
   lambda n: If(n < 2)(lambda: n)(lambda: f(n-1) + f(n-2))())(8))
