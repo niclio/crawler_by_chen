@@ -51,15 +51,15 @@ POWER          = lambda x:lambda y:y(x)
 ABS_DIFFERENCE = lambda x:lambda y:ADDITION(SUBTRACTION(x)(y))(SUBTRACTION(y)(x))
 
 # Church Numerals
-_zero  = lambda f:IDENTITY # 用 λf. λx. x 當 0
-_one   = SUCCESSOR(_zero)  # λf. λf. λx. x 當 1
-_two   = SUCCESSOR(_one)   # λf. λf. λf. λx. x 當 2
-_three = SUCCESSOR(_two)   # ...
-_four  = MULTIPLICATION(_two)(_two)
-_five  = SUCCESSOR(_four)
-_eight = MULTIPLICATION(_two)(_four)
-_nine  = SUCCESSOR(_eight)
-_ten   = MULTIPLICATION(_two)(_five)
+_zero  = lambda f:IDENTITY # 0      : 用 λf. λx. x 當 0
+_one   = SUCCESSOR(_zero)  # 1=S(0) : λf. λf. λx. x 當 1
+_two   = SUCCESSOR(_one)   # 2=S(1) : λf. λf. λf. λx. x 當 2
+_three = SUCCESSOR(_two)   # 3=S(2)
+_four  = MULTIPLICATION(_two)(_two)  # 4 = 2*2
+_five  = SUCCESSOR(_four)            # 5 = S(4)
+_eight = MULTIPLICATION(_two)(_four) # 8 = 2*4
+_nine  = SUCCESSOR(_eight)           # 9 = S(8)
+_ten   = MULTIPLICATION(_two)(_five) # 10 = 2*5
 
 # Comparison
 IS_ZERO               = lambda n:n(lambda _:FALSE)(TRUE)
@@ -72,14 +72,12 @@ IS_GREATER_THAN       = lambda m:lambda n:NOT(IS_LESS_THAN_EQUAL(m)(n))
 IS_NULL               = lambda p:p(lambda x:lambda y:FALSE)
 NIL                   = lambda x:TRUE
 
-# Combinators : 把傳進來的函數 f 重複兩次，變成 f(f)
-# 這樣就能讓 IF 之類的函數變成兩份，讓兩種路徑都能被執行到
-# 例如 print(Y(lambda f: lambda n: IF(n < 2)(lambda: n)(lambda: f(n-1) + f(n-2))())(7))
+# 另一種定義方式 Y = lambda g:g(lambda:Y(g))
+# Y-Combinators : 令 g = (lambda x:f(lambda y:x(x)(y)))
+# 利用遞迴的方式 Y(g) = g(g) = g(g)(y) = 
 Y = lambda f:\
   (lambda x:f(lambda y:x(x)(y)))\
   (lambda x:f(lambda y:x(x)(y)))
-
-# python 的 Y-Combinator 參考 https://lptk.github.io/programming/2019/10/15/simple-essence-y-combinator.html
 
 # Lists
 
@@ -197,7 +195,8 @@ FACTORIAL = Y(lambda f:lambda n:IF(IS_ZERO(n))\
   (lambda _:MULTIPLICATION(n)(f(PREDECESSOR(n))))\
 (NIL))
 
-FIBONACCI = Y(lambda f:lambda n:IF(IS_LESS_THAN_EQUAL(n)(SUCCESSOR(lambda f:IDENTITY)))\
+FIBONACCI = Y(lambda f:lambda n:\
+  IF(IS_LESS_THAN_EQUAL(n)(SUCCESSOR(lambda f:IDENTITY)))\
   (lambda _:n)\
   (lambda _:ADDITION\
     (f(PREDECESSOR(n)))\

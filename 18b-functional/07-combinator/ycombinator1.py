@@ -5,7 +5,7 @@ Y = lambda g:g(lambda:Y(g)) # Y(g) = g() = Y(g)
 fact = Y( # fact = Y(g) = g() = fact
     lambda g: # g for self-referencing
         lambda x: # this curryed function is returned by g()
-            1 if x == 0 else x * fact(x - 1) # g() = fact
+            1 if x == 0 else x * g()(x - 1) # g() = fact
 )
 
 print('fact(5)=', fact(5))
