@@ -12,3 +12,6 @@ sum = Z( # sum(v) = Z(g)(v) = g(Z(g))(v) = g(sum)(v)
 )
 
 print('sum(5)(8)=', sum(5)(8))
+# 令 f = lambda g: lambda _from: lambda _to:
+#          _to if _from == _to else _from + g(_from + 1)(_to)
+# sum(5)(8) = g(Z(g))(5)(8) = 5+g(5+1)(8) = 5+sum(6)(8)

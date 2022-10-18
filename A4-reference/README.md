@@ -1,15 +1,20 @@
 # Reference
 
+## Code
+
+* https://medium.com/@tomas.bouda
+    * [100 days of algorithms](https://github.com/coells/100days)
+
 ## Book
+
+* [Algorithms by Jeff Erickson](https://jeffe.cs.illinois.edu/teaching/algorithms/)
+    * [PDF](https://jeffe.cs.illinois.edu/teaching/algorithms/book/Algorithms-JeffE.pdf)
 
 * [計算複雜性：現代方法 (Computational Complexity: A Modern Approach) ](https://www.tenlong.com.tw/products/9787111518990)
 
 * [Introduction to Theoretical Computer Science](https://introtcs.org/public/) (超讚)
     * PDF -- https://files.boazbarak.org/introtcs/lnotes_book.pdf
     * Course -- https://cs121.boazbarak.org/
-
-* [Algorithms by Jeff Erickson](https://jeffe.cs.illinois.edu/teaching/algorithms/)
-    * [PDF](https://jeffe.cs.illinois.edu/teaching/algorithms/book/Algorithms-JeffE.pdf)
 
 * [Structure and Interpretation of Computer Programs (SICP)](https://en.wikipedia.org/wiki/Structure_and_Interpretation_of_Computer_Programs)
     * https://web.mit.edu/6.001/6.037/sicp.pdf

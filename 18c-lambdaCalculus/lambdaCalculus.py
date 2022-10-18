@@ -91,6 +91,13 @@ RANGE = lambda m:lambda n:Y(lambda f:lambda m:IF(IS_EQUAL(m)(n))\
   (lambda _: CONS(m)(NIL))\
   (lambda _: CONS(m)(f(SUCCESSOR(m))))\
 (NIL))(m)
+# 令 g = lambda f:lambda m:IF(IS_EQUAL(m)(n))\
+#          (lambda _: CONS(m)(NIL))\
+#          (lambda _: CONS(m)(f(SUCCESSOR(m))))\
+#          (NIL)
+# 再令 h = (lambda x:f(lambda y:x(x)(y)))
+# Y(g) = h(h) = f(lambda y:h(h)(y))
+# RANGE(3)(5) = Y(g)(3)(5) = g(g)(Y)(3)(5) = CONS(3)(g(m+1)) ...
 
 # print(RANGE(_three))
 # print(RANGE(_three)(_five))
